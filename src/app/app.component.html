@@ -1,0 +1,51 @@
+<div class="form">
+  <h2 id="registration">Registration Form</h2>
+
+  <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+    <label for="fname">First Name</label>
+    <input type="Text" id="fname" placeholder="Your name..."
+    name="firstname" [(ngModel)]="firstname" required #fname="ngModel">
+    <div>
+      <small *ngIf="fname.invalid && fname.touched">First Name is required</small>
+      <span *ngIf=" firstname">You enetered {{firstname}}</span>
+    </div>
+
+    <label for="lname">Last Name</label>
+    <input type="Text" id="lname" placeholder="Your Last name..."
+    name="lastname" [(ngModel)]="lastname" required>
+    <div>
+      <span *ngIf="lastname">You enetered {{lastname}}</span>
+    </div>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Your name..."
+    name="email" ngModel required email>
+
+    <label for="country">Country</label>
+    <select id="country" name="country" [ngModel]="defaultCountry">
+      <option value="australia">Australia</option>
+      <option value="usa">USA</option>
+      <option value="canada">Canada</option>
+      <option value="uk">UK</option>
+      <option value="india">India</option>
+    </select>
+
+    <label for="gender">Gender</label>
+    <input type="radio" id="male" value="male" name="gender" ngModel>
+    <label for="male">Male</label>
+    <input type="radio" id="female" value="female" name="gender" ngModel>
+    <label for="female">Female</label>
+    <input type="radio" id="other" value="other" name="gender" ngModel>
+    <label for="other">Other</label>
+    <br><br>
+
+    <label>Hobbies <i>(Optional)</i></label>
+    <div class="form-inline">
+      <label><input type="checkbox" value="sports" name="hobbies" ngModel>Sports</label>
+      <label><input type="checkbox" value="movies" name="hobbies" ngModel>Movies</label>
+      <label><input type="checkbox" value="music" name="hobbies" ngModel>Music</label>
+    </div>
+
+    <input type="submit" value="Submit" id="btn" [disabled]="!myForm.valid">
+  </form>
+</div>
